@@ -1,0 +1,51 @@
+[user]
+	name = Dan Stace
+	email = dstace@gmail.com
+[push]
+	default = simple
+[alias]
+	s = status -s
+	st = status
+	aa = add --all
+	ca = commit --amend
+	cm = commit -m
+	b = branch
+	co = checkout
+	cob = checkout -b
+	fp = push --force-with-lease
+	l = log --oneline
+	git = !exec git
+	rbi = rebase --interactive
+	root = rebase --interactive --root
+	f = rebase --interactive HEAD~2
+	now = !git commit --amend --no-edit --date=\"$(date)\"
+	# Typos
+	ad = add
+	ass = add
+[color]
+	ui = auto
+[core]
+	filemode = false
+	autocrlf = false
+	safecrlf = false
+	editor = code --wait
+	hooksPath = ~/code/GitConfig/hooks
+	excludesfile = ~/code/GitConfig/.gitignore_global
+[remote "origin"]
+	prune = true
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+[gitflow]
+	multi-hotfix = true
+[init]
+	defaultBranch = main
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
