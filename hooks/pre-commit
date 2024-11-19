@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 hook_script_dir="$(dirname "$0")"
 repo_root_dir=$(git rev-parse --show-toplevel)
 
@@ -9,8 +9,8 @@ if [[ -z $files ]]; then
 	exit 0
 fi
 
-# Check if formatting should be skipped for any file extenions
-IFS=',' read -ra skips <<< "$SYCDAN_SKIPFORMAT"
+# Check if formatting should be skipped for any file extensions
+IFS=',' read -ra skips <<< "$GITCONFIG_SKIPFORMAT"
 for ext in "${skips[@]}"; do
   declare "skipformat_$ext"=1
 	echo "Formatting disabled for .$ext files"
