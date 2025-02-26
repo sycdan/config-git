@@ -25,6 +25,7 @@ launch.json
 /src/environments/environment.ts
 db*.json
 *.bak
+sync.ffs_db
 
 ################################################################################
 # Compiled source

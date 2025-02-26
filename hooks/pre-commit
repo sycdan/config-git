@@ -10,20 +10,27 @@ if [[ -z $files ]]; then
 fi
 
 # Check if formatting should be skipped for any file extensions
-IFS=',' read -ra skips <<< "$GITCONFIG_SKIPFORMAT"
+IFS=',' read -ra skips <<< "$GIT__HOOKS__SKIPFORMAT"
 for ext in "${skips[@]}"; do
   declare "skipformat_$ext"=1
 	echo "Formatting disabled for .$ext files"
 done
 
-# If CS formatting is enabled, check if CSharpier is installed
+# If CS formatting is enabled, ensure CSharpier is installed
 if [[ -z $skipformat_cs ]]; then
-	# Attempt to get the version of CSharpier, swallowing any output
 	dotnet csharpier --version &> /dev/null
-	# Check if the above command failed (indicating the tool is not installed)
 	if [ $? -ne 0 ]; then
 		echo "Installing CSharpier"
 		dotnet tool install -g csharpier
+	fi
+fi
+
+# If PY formatting is enabled, ensure Ruff is installed
+if [[ -z $skipformat_py ]]; then
+	python -m ruff --version &> /dev/null
+	if [ $? -ne 0 ]; then
+		echo "Installing Ruff"
+		python -m pip install ruff
 	fi
 fi
 
@@ -36,6 +43,9 @@ for file in $files; do
 	# Format the file based on its extension, provided formatting is enabled for it
 	if [[ -z $skipformat_cs && "$file" == *.cs ]]; then
 		dotnet csharpier $file --config-path=$hook_script_dir/.csharpierrc.json
+	fi
+	if [[ -z $skipformat_py && "$file" == *.py ]]; then
+		python -m ruff format $file
 	fi
 	# Re-stage the file
 	git add "$file"

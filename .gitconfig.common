@@ -1,6 +1,5 @@
 [user]
 	name = Dan Stace
-	email = dstace@gmail.com
 [push]
 	default = simple
 [alias]
@@ -16,6 +15,7 @@
 	l = log --oneline
 	git = !exec git
 	rbi = rebase --interactive
+	rbc = rebase --continue
 	root = rebase --interactive --root
 	f = rebase --interactive HEAD~2
 	now = !git commit --amend --no-edit --date=\"$(date)\"
@@ -29,8 +29,8 @@
 	autocrlf = false
 	safecrlf = false
 	editor = code --wait
-	hooksPath = ~/code/GitConfig/hooks
-	excludesfile = ~/code/GitConfig/.gitignore_global
+	hooksPath = ~/.config/git/hooks
+	excludesfile = ~/.config/git/.gitignore_global
 [remote "origin"]
 	prune = true
 [fetch]
