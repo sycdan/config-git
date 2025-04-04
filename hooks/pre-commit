@@ -45,7 +45,7 @@ for file in $files; do
 		dotnet csharpier $file --config-path=$hook_script_dir/.csharpierrc.json
 	fi
 	if [[ -z $skipformat_py && "$file" == *.py ]]; then
-		python -m ruff format $file
+		python -m ruff format $file --quiet
 	fi
 	# Re-stage the file
 	git add "$file"
