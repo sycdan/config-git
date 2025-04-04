@@ -30,7 +30,7 @@
 	repo = "!f() { branch=$(git brname 2> /dev/null); if [ -n \"$branch\" ] ; then if [ \"$branch\" = \"HEAD\" ] ; then if git status | grep 'rebase in progress' > /dev/null ; then branch='rebase'; else branch=$(git describe --always); fi; fi; echo $(basename $(git rev-parse --show-toplevel)):$branch; else exit 1; fi; }; f"
 	rbc = rebase --continue
 	rbi = rebase --interactive
-	root = rebase --interactive --root
+	rbir = rebase --interactive --root
 	ss = status -s
 
 	# Eric's magical commands
