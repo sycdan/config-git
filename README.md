@@ -5,7 +5,7 @@
 Clone to a central location:
 
 ```bash
-git clone https://github.com/sycdan/GitConfig.git ~/.config/git
+git clone https://github.com/sycdan/config-git.git ~/.config/git
 ```
 
 Copy the config template file in your home folder:
