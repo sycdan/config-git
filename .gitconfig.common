@@ -21,8 +21,9 @@
 	git = !exec git
 	l = log --oneline
 	ls = ls-files
-	# updates the timestamp of the last commit to now
-	now = !git commit --amend --no-edit --date=\"$(date)\"
+	# updates the timestamp of the last commit to an offset from now
+	time = "!f() { git commit --amend --no-edit --date=\"$(date -d \"$1\")\"; }; f"
+	now = !git time now
 	# returns: <repo_name>:<branch_info>
 	# branch_info is typically the current branch name, but if a rebase is in
 	# progress it will be "rebase" and if a specific commit has been checked out,
