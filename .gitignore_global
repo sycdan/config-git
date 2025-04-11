@@ -27,6 +27,7 @@ db*.json
 *.bak
 sync.ffs_db
 .rooignore
+scratch.py
 
 ################################################################################
 # Compiled source
