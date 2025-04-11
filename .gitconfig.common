@@ -32,7 +32,7 @@
 	rbc = rebase --continue
 	rbi = rebase --interactive
 	rbir = rebase --interactive --root
-	ss = status -s
+	s = status -s
 
 	# Eric's magical commands
   brexists = "!f() { git show-ref --verify --quiet refs/heads/$1; }; f"
@@ -74,7 +74,7 @@
   unignore = pick -t file update-index --no-assume-unchanged
 
   # act on rev list indexes
-  s = pick -t rev switch
+  sw = pick -t rev switch
   cp = pick -t rev cherry-pick
   flog = pick -t rev log -1 --name-status
   glog = pick -t rev slog --graph
