@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 hook_script_dir="$(dirname "$0")"
 repo_root_dir=$(git rev-parse --show-toplevel)
 
